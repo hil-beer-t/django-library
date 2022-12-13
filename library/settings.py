@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'django_browser_reload',
+    'library',
 ]
 
 TAILWIND_APP_NAME = 'theme'
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'library.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['loans/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
