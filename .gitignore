@@ -1,1 +1,4 @@
 db.sqlite3
+my_venv
+loans/__pycache__
+loans/migrations

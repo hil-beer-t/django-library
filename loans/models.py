@@ -47,8 +47,8 @@ class Loan(models.Model):
     is_returned = models.BooleanField()
     ok_returned = models.BooleanField()
     days_late = models.PositiveSmallIntegerField()
-    app_user = models.ForeignKey(AppUser, on_delete=models.RESTRICT, unique=True)
-    book = models.ForeignKey(Book, on_delete=models.RESTRICT, unique=True)
+    app_user = models.ForeignKey(AppUser, on_delete=models.RESTRICT)
+    book = models.ForeignKey(Book, on_delete=models.RESTRICT)
 
     def __str__(self) -> str:
         return self.app_user.email + " - " + self.book.title + " - " + self.book.cod[-4:]
