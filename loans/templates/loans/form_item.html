@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %} 
+
+
+{% block content %}
+
+<section class="text-gray-600 body-font relative">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-12">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">New Item</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base"><l class="text-red-500">*</l> required field</p>
+    </div>
+
+    
+    <!-- form start -->
+       
+    <form class="lg:w-1/2 md:w-2/3 mx-auto" method="post">
+      <div class="">
+      
+        {% csrf_token %}
+  
+        {{ form | crispy }}
+  
+        <div class="p-2 w-full flex justify-center content-center place-content-center	">
+          <div class="p-2 cursor-pointer">
+              <button type="submit" value="Submit" class="flex mx-auto text-white items-center bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
+                  Submit 
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="ml-2 w-5 h-5">
+                    <path fill-rule="evenodd" d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd" />
+                  </svg>                                  
+              </button>
+          </div>
+
+          <div class="p-2 cursor-pointer">
+              <a href="{% url 'url_home' %}" class="p-1 flex mx-auto text-white items-center bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
+                ‎
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                  <path fill-rule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clip-rule="evenodd" />
+                </svg>                                              
+              </a>
+          </div>
+      </div>
+      </div>
+
+    </form>
+
+    <!-- form end -->
+  </div>
+</section>
+
+{% endblock %}

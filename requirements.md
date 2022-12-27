@@ -5,3 +5,5 @@ django-tailwind==3.4.0
 ez-setup==0.9
 psycopg2==2.9.5
 sqlparse==0.4.3
+django-crispy-forms==1.13.0
+crispy-tailwind==0.5.0  

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -31,24 +32,14 @@ class Book(models.Model):
     def __str__(self) -> str:
         return self.title + " - " + self.cod
 
-class AppUser(models.Model):
-    mat = models.CharField(max_length=100, blank=False, unique=True)
-    name = models.CharField(max_length=255,blank=False)
-    email = models.EmailField(blank=False, unique=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self) -> str:
-        return self.email
-
 class Loan(models.Model):
     start_time = models.DateField(auto_now=False, auto_now_add=False, null=False)
     end_time = models.DateField(auto_now=False, auto_now_add=False, null=False)
     is_returned = models.BooleanField()
     ok_returned = models.BooleanField()
     days_late = models.PositiveSmallIntegerField()
-    app_user = models.ForeignKey(AppUser, on_delete=models.RESTRICT)
+    user = models.ForeignKey(User, on_delete=models.RESTRICT, default=2)
     book = models.ForeignKey(Book, on_delete=models.RESTRICT)
 
     def __str__(self) -> str:
-        return self.app_user.email + " - " + self.book.title + " - " + self.book.cod[-4:]
+        return self.user.email + " - " + self.book.title + " - " + self.book.cod[-4:]
