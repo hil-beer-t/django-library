@@ -35,9 +35,9 @@ class Book(models.Model):
 class Loan(models.Model):
     start_time = models.DateField(auto_now=False, auto_now_add=False, null=False)
     end_time = models.DateField(auto_now=False, auto_now_add=False, null=False)
-    is_returned = models.BooleanField()
-    ok_returned = models.BooleanField()
-    days_late = models.PositiveSmallIntegerField()
+    is_returned = models.BooleanField(default=False)
+    ok_returned = models.BooleanField(default=False)
+    days_late = models.PositiveSmallIntegerField(null=True, default=None)
     user = models.ForeignKey(User, on_delete=models.RESTRICT, default=2)
     book = models.ForeignKey(Book, on_delete=models.RESTRICT)
 

@@ -9,4 +9,5 @@ urlpatterns = [
     path('book/<int:cod>/loan', views.new_loan, name='url_new_loan'),
     path('login', views.login, name="login"),
     path('signup', views.signup, name="signup"),
+    path('resolve/loan', views.resolve_loan, name='url_resolve_loan')
 ]

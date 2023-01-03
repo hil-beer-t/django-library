@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from . models import Book
+from . models import Book, Loan
 from . form import BookForm, LoanForm
 from django.http import HttpResponse
 from django.contrib.auth.models import User
@@ -27,21 +27,21 @@ def new_book(request):
 @login_required(login_url="/login")
 def new_loan(request, cod):
     book = Book.objects.get(cod = cod)
-    current_user = request.user
 
     if book.is_borrowed:
         return HttpResponse('Book already lent')
 
-    form = LoanForm(request.POST or None, instance=book)
-    current_user = request.user
-
-    if form.is_valid():
-        form.user_pk = current_user.id
-        form.book_pk = book.id
-        form.save()
-        return redirect('url_list') 
+    form = LoanForm()
     
     return render(request, 'loans/form_loan.html', {'form': form, 'book': book })
+
+def resolve_loan(request):
+    form = LoanForm(request.POST)
+
+    if form.is_valid():
+        form.save()
+        
+    return HttpResponse('Erro interno do sistema')
 
 def signup( request):
     if request.method == 'GET':

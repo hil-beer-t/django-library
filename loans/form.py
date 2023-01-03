@@ -13,9 +13,6 @@ class LoanForm(forms.ModelForm):
 
     required_css_class = 'required'
 
-    user_pk = models.ForeignKey(User, on_delete=models.RESTRICT, default=2)
-    book_pk = models.ForeignKey(Book, on_delete=models.RESTRICT)
-
     start_time = forms.DateField(
         label='Start date',
         widget=forms.DateInput(
@@ -37,7 +34,7 @@ class LoanForm(forms.ModelForm):
 
     class Meta:
         model = Loan
-        fields = ['start_time', 'end_time']
+        fields = ['start_time', 'end_time', 'user', 'book']
 
     def __init__(self, *args, **kwargs):
         super(LoanForm, self).__init__(*args, **kwargs)

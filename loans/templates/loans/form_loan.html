@@ -67,7 +67,7 @@
 
     <!-- form start -->
        
-    <form class="lg:w-1/2 md:w-2/3 mx-auto" action="{% url 'url_new_loan' book.cod %}" method="post">
+    <form class="lg:w-1/2 md:w-2/3 mx-auto" action="{% url 'url_resolve_loan' %}" method="post">
       <div class="">
       
         {% csrf_token %}
